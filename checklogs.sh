@@ -4,6 +4,7 @@
 # Hourly check for no logs
 #0 * * * * root /root/checklogs.sh 2>&1
 
+#curl -XGET -K /opt/conf/example/elasticsearch/curl.config -k -s "https://X.X.X.X:9200/_cat/count" -H 'Content-Type: application/json' -d'
 doc_count=$(curl -XGET -k -s "https://X.X.X.X:9200/_cat/count" -H 'Content-Type: application/json' -d'
 {
   "query": {
@@ -26,4 +27,3 @@ then
 else
     exit 0
 fi
-
